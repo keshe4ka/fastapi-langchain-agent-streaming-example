@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "fastapi-langchain-agent-streaming-example"
+version = "0.1.0"
+description = ""
+authors = ["keshe4ka <a.anaschenko@btc-s.ru>"]
+readme = "README.md"
+packages = [{include = "fastapi_langchain_agent_streaming_example"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.31.0"
+fastapi = "^0.110.0"
+langchain-openai = "^0.1.0"
+langchain = "^0.1.13"
+tavily-python = "^0.3.1"
+uvicorn = "^0.29.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
