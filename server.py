@@ -44,9 +44,7 @@ def _get_tools() -> list[BaseTool]:
     """ Return a list of tools. """
 
     return [
-        TavilySearchResults(
-            api_wrapper=TavilySearchAPIWrapper(tavily_api_key=TAVILY_API_KEY)
-        )
+        TavilySearchResults(api_wrapper=TavilySearchAPIWrapper(tavily_api_key=TAVILY_API_KEY))
     ]
 
 
@@ -108,12 +106,9 @@ async def chat(message: Annotated[str, Body(embed=True)]):
             if event['event'] == 'on_chat_model_stream':
                 content = event['data']['chunk'].content
                 if content:
-                    print(type(Answer(token=content).model_dump_json() + '\n'))
                     yield Answer(token=content).model_dump_json() + '\n'
 
-    return StreamingResponse(
-        async_generator(), media_type='application/x-ndjson'
-    )
+    return StreamingResponse(async_generator(), media_type='application/x-ndjson')
 
 
 if __name__ == '__main__':
